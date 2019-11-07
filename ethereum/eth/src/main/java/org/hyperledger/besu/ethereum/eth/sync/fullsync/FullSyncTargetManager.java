@@ -59,12 +59,14 @@ class FullSyncTargetManager<C> extends SyncTargetManager<C> {
         .isWorldStateAvailable(commonAncestor.getStateRoot())) {
       return Optional.of(syncTarget);
     } else {
-      LOG.warn(
-          "Disconnecting {} because world state is not available at common ancestor at block {}",
-          syncTarget.peer(),
-          commonAncestor.getNumber());
-      syncTarget.peer().disconnect(DisconnectReason.USELESS_PEER);
-      return Optional.empty();
+      // LOG.warn(
+      //     "Disconnecting {} because world state is not available at common ancestor at block {}",
+      //     syncTarget.peer(),
+      //     commonAncestor.getNumber());
+      // syncTarget.peer().disconnect(DisconnectReason.USELESS_PEER);
+      // return Optional.empty();
+      throws new Exception("Full Sync mode cannot run until fast sync mode has completed");
+      
     }
   }
 
